@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService, JobPost } from '../../services/data.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { DataService, JobPost } from '../../services/data.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   title = 'home';
   data: JobPost[] = [];
 
