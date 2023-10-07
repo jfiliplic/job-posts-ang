@@ -7,7 +7,7 @@ import { catchError, throwError, Subscription } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   title = 'home';
   data: JobPost[] = [];
   subscription: Subscription = new Subscription();
