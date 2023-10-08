@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService, JobPost } from '../../services/data.service';
 import { catchError, throwError, Subscription } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   data: JobPost[] = [];
   subscription: Subscription = new Subscription();
   errorMessage: string = '';
+
+  displayedColumns: any[] = ['title', 'openAt', 'closeAt', 'interviewTypes'];
+
+  dataSource = new MatTableDataSource<JobPost>();
 
   constructor(private dataService: DataService) {}
 
@@ -25,8 +30,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe((response) => {
-        this.data = response;
-        console.log(this.data);
+        this.dataSource.data = response;
+        console.log(this.dataSource.data);
       });
   }
 
