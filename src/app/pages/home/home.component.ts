@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   errorMessage: string = '';
 
-  displayedColumns: any[] = ['title', 'openAt', 'closeAt', 'interviewTypes'];
+  displayedColumns: string[] = ['title', 'openAt', 'closeAt', 'interviewTypes'];
 
   dataSource = new MatTableDataSource<JobPost>();
 
@@ -37,5 +37,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  formatDate(interviewDate: Date): string {
+    const date = new Date(interviewDate);
+    const yearOfDate = date.getFullYear();
+    const monthOfDate = (date.getMonth() + 1).toString().padStart(2, '0');
+    const dayOfDate = date.getDate().toString().padStart(2, '0');
+    return [dayOfDate, monthOfDate, yearOfDate].join('.');
+  }
+
+  countInterviews(interviewTypes: []): number {
+    return interviewTypes.length;
   }
 }
