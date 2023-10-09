@@ -45,6 +45,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         this.dataSource.data = response;
         console.log(this.dataSource.data);
       });
+
+    this.dataSource.filterPredicate = (data, filter: string): boolean => {
+      return data.title.toLowerCase().includes(filter);
+    };
   }
 
   ngAfterViewInit(): void {
