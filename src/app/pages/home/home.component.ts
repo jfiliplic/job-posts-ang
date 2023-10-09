@@ -9,6 +9,7 @@ import { DataService, JobPost } from '../../services/data.service';
 import { catchError, throwError, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort();
 
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+
   ngOnInit(): void {
     this.subscription = this.dataService
       .getData()
@@ -46,6 +49,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnDestroy(): void {
