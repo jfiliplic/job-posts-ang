@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
@@ -66,5 +66,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   countInterviews(interviewTypes: []): number {
     return interviewTypes.length;
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

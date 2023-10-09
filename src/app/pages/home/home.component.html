@@ -4,6 +4,16 @@
     {{ errorMessage }}
   </div>
 
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Search by job post title"
+      #input
+    />
+  </mat-form-field>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
     <ng-container matColumnDef="title">
       <th mat-header-cell mat-sort-header *matHeaderCellDef>Title</th>
