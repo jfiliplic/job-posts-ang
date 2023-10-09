@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService, JobPost } from '../../services/data.service';
 import { catchError, throwError, Subscription } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   data: JobPost[] = [];
   subscription: Subscription = new Subscription();
   errorMessage: string = '';
+
+  displayedColumns: string[] = ['title', 'openAt', 'closeAt', 'interviewTypes'];
+
+  dataSource = new MatTableDataSource<JobPost>();
 
   constructor(private dataService: DataService) {}
 
@@ -25,12 +30,24 @@ export class HomeComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe((response) => {
-        this.data = response;
-        console.log(this.data);
+        this.dataSource.data = response;
+        console.log(this.dataSource.data);
       });
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  formatDate(interviewDate: Date): string {
+    const date = new Date(interviewDate);
+    const yearOfDate = date.getFullYear();
+    const monthOfDate = (date.getMonth() + 1).toString().padStart(2, '0');
+    const dayOfDate = date.getDate().toString().padStart(2, '0');
+    return [dayOfDate, monthOfDate, yearOfDate].join('.');
+  }
+
+  countInterviews(interviewTypes: []): number {
+    return interviewTypes.length;
   }
 }

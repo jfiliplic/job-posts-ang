@@ -1,4 +1,37 @@
-<p>home works!</p>
-<div class="error-message" *ngIf="errorMessage">
-  {{ errorMessage }}
+<div class="table-wrapper">
+  <h2>Job posts</h2>
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="openAt">
+      <th mat-header-cell *matHeaderCellDef>Opens at</th>
+      <td mat-cell *matCellDef="let element">
+        {{ formatDate(element.openAt) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="closeAt">
+      <th mat-header-cell *matHeaderCellDef>Closes at</th>
+      <td mat-cell *matCellDef="let element">
+        {{ formatDate(element.closeAt) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="interviewTypes">
+      <th mat-header-cell *matHeaderCellDef># of interviews</th>
+      <td mat-cell *matCellDef="let element">
+        {{ countInterviews(element.interviewTypes) }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>
