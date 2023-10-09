@@ -4,28 +4,28 @@
     {{ errorMessage }}
   </div>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
     <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Title</th>
       <td mat-cell *matCellDef="let element">{{ element.title }}</td>
     </ng-container>
 
     <ng-container matColumnDef="openAt">
-      <th mat-header-cell *matHeaderCellDef>Opens at</th>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Opens at</th>
       <td mat-cell *matCellDef="let element">
         {{ formatDate(element.openAt) }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="closeAt">
-      <th mat-header-cell *matHeaderCellDef>Closes at</th>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Closes at</th>
       <td mat-cell *matCellDef="let element">
         {{ formatDate(element.closeAt) }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="interviewTypes">
-      <th mat-header-cell *matHeaderCellDef># of interviews</th>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef># of interviews</th>
       <td mat-cell *matCellDef="let element">
         {{ countInterviews(element.interviewTypes) }}
       </td>

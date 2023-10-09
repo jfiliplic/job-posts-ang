@@ -1,14 +1,21 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { DataService, JobPost } from '../../services/data.service';
 import { catchError, throwError, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   title = 'home';
   data: JobPost[] = [];
   subscription: Subscription = new Subscription();
@@ -19,6 +26,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<JobPost>();
 
   constructor(private dataService: DataService) {}
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort = new MatSort();
 
   ngOnInit(): void {
     this.subscription = this.dataService
@@ -33,6 +42,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.dataSource.data = response;
         console.log(this.dataSource.data);
       });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   ngOnDestroy(): void {
