@@ -30,7 +30,7 @@ interface InterviewType {
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'https://stag.api.recruitment.indigo.si/JobPost';
+  private apiUrl = 'https://stage.api.recruitment.indigo.si/JobPost';
 
   private bearerToken = environment.bearerToken;
 

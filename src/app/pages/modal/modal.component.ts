@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal',
@@ -7,9 +7,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent {
-  constructor(public dialog: MatDialog) {}
+  modalJobPost: any;
 
-  // openDialog() {
-  //   this.dialog.open(ModalComponent);
-  // }
+  constructor(public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) data: any) {
+    this.modalJobPost = data;
+  }
 }

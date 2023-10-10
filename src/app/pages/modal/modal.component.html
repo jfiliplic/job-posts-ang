@@ -1,11 +1,21 @@
-<h2 mat-dialog-title>Modal</h2>
+<h2 class="modal-title" mat-dialog-title>Job post</h2>
 <mat-dialog-content class="mat-typography">
-  <h3>test</h3>
-  <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis iusto dicta
-    excepturi ea aspernatur sunt dignissimos tempore dolores, necessitatibus
-    magni!
-  </p>
+  <h3>
+    Title: <strong>{{ modalJobPost.title }}</strong>
+  </h3>
+  <h3>
+    Opens: <strong>{{ modalJobPost.openAt }}</strong>
+  </h3>
+  <h3>
+    # of interviews: <strong>{{ modalJobPost.interviewTypes }}</strong>
+  </h3>
+  <h3>
+    Closes: <strong>{{ modalJobPost.closeAt }}</strong>
+  </h3>
+  <h3>Description:</h3>
+  <p class="description">{{ modalJobPost.description }}</p>
+  <h3>Notes:</h3>
+  <p class="notes">{{ modalJobPost.notes }}</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Close</button>
