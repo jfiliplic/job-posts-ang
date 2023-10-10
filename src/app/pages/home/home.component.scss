@@ -1,8 +1,27 @@
 .error-message {
-  margin-bottom: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .table-wrapper {
   margin: 20px auto;
   padding: 20px;
+
+  button.refresh {
+    position: relative;
+    top: 10px;
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .search-bar {
+    float: right;
+  }
+
+  mat-paginator.hidden {
+    visibility: hidden;
+  }
 }

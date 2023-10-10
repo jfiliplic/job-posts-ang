@@ -33,11 +33,18 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   ngOnInit(): void {
+    this.fetchAndDisplayData();
+    this.dataSource.filterPredicate = (data, filter: string): boolean => {
+      return data.title.toLowerCase().includes(filter);
+    };
+  }
+
+  fetchAndDisplayData(): void {
     this.subscription = this.dataService
       .getData()
       .pipe(
         catchError((err) => {
-          this.errorMessage = 'Something went wrong';
+          this.errorMessage = 'Sorry, something went wrong, cannot display data';
           return throwError(() => err);
         })
       )
@@ -45,10 +52,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         this.dataSource.data = response;
         console.log(this.dataSource.data);
       });
-
-    this.dataSource.filterPredicate = (data, filter: string): boolean => {
-      return data.title.toLowerCase().includes(filter);
-    };
   }
 
   ngAfterViewInit(): void {
