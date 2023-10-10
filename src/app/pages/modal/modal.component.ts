@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class ModalComponent {
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
-    this.dialog.open(ModalComponent);
-  }
+  // openDialog() {
+  //   this.dialog.open(ModalComponent);
+  // }
 }
