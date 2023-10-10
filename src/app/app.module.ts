@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AppMaterialModule } from './app.material-module';
+import { ModalComponent } from './pages/modal/modal/modal.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, ModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
