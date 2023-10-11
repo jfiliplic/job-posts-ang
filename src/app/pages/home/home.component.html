@@ -1,28 +1,30 @@
-<div class="error-message" *ngIf="errorMessage">
+<div class="error-msg" *ngIf="errorMessage">
   {{ errorMessage }}
 </div>
 
-<div class="table-wrapper">
-  <h2>Job posts</h2>
-  <button class="refresh" (click)="fetchAndDisplayData()" mat-flat-button>
-    Refresh
-    <mat-icon
-      aria-hidden="false"
-      aria-label="Example home icon"
-      fontIcon="autorenew"
-    ></mat-icon>
-  </button>
-  <mat-form-field class="search-bar">
-    <mat-label>Search</mat-label>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="By job post title"
-      #input
-    />
-  </mat-form-field>
+<div class="table-wrapper mat-elevation-z8">
+  <h1 class="table-title">Job posts</h1>
+  <div class="refresh-search-wrapper">
+    <button class="refresh" (click)="fetchAndDisplayData()" mat-stroked-button>
+      Refresh
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="autorenew"
+      ></mat-icon>
+    </button>
+    <mat-form-field class="search">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="By job post title"
+        #input
+      />
+    </mat-form-field>
+  </div>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+  <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">
       <th mat-header-cell mat-sort-header *matHeaderCellDef>Title</th>
       <td mat-cell *matCellDef="let element">{{ element.title }}</td>
