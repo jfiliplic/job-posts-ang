@@ -6,28 +6,28 @@
   <mat-dialog-content class="mat-typography">
     <div class="grid-content-wrapper">
       <h3>
-        Title: <strong>{{ modalJobPost.title }}</strong>
+        Title:<span>{{ modalJobPost.title }}</span>
       </h3>
       <h3>
-        Opens: <strong>{{ modalJobPost.openAt }}</strong>
+        Opens:<span>{{ modalJobPost.openAt }}</span>
       </h3>
       <h3>
-        # of interviews: <strong>{{ modalJobPost.interviewTypes }}</strong>
+        # of interviews:<span>{{ modalJobPost.interviewTypes }}</span>
       </h3>
       <h3>
-        Closes: <strong>{{ modalJobPost.closeAt }}</strong>
+        Closes:<span>{{ modalJobPost.closeAt }}</span>
       </h3>
     </div>
     <div class="flex-content-wrapper">
       <h3>Description:</h3>
-      <p>{{ modalJobPost.description }}</p>
+      <p class="first">{{ modalJobPost.description }}</p>
     </div>
     <div class="flex-content-wrapper">
       <h3>Notes:</h3>
-      <p>{{ modalJobPost.notes }}</p>
+      <p class="second">{{ modalJobPost.notes }}</p>
     </div>
   </mat-dialog-content>
 </div>
-<mat-dialog-actions align="end">
+<mat-dialog-actions align="start">
   <button mat-button mat-dialog-close>Close</button>
 </mat-dialog-actions>

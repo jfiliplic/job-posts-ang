@@ -8,3 +8,8 @@ body {
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// to hide "Items per page: 10"
+.mat-mdc-paginator-page-size {
+  visibility: hidden;
+}
