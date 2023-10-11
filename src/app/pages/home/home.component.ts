@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   data: JobPost[] = [];
   subscription: Subscription = new Subscription();
   errorMessage: string = '';
+  spinner: boolean = true;
 
   displayedColumns: string[] = ['title', 'openAt', 'closeAt', 'interviewTypes'];
 
@@ -35,6 +36,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.spinner = false;
+    }, 1000);
     this.fetchAndDisplayData();
     this.dataSource.filterPredicate = (data, filter: string): boolean => {
       return data.title.toLowerCase().includes(filter);

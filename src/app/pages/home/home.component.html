@@ -2,6 +2,13 @@
   {{ errorMessage }}
 </div>
 
+<mat-spinner
+  class="spinner"
+  style="width: 3rem; height: 3rem"
+  role="status"
+  *ngIf="spinner"
+></mat-spinner>
+
 <div class="table-wrapper mat-elevation-z8">
   <h1 class="table-title">Job posts</h1>
   <div class="refresh-search-wrapper">
