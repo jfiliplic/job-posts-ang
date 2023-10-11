@@ -1,22 +1,33 @@
-<h2 class="modal-title" mat-dialog-title>Job post</h2>
-<mat-dialog-content class="mat-typography">
-  <h3>
-    Title: <strong>{{ modalJobPost.title }}</strong>
-  </h3>
-  <h3>
-    Opens: <strong>{{ modalJobPost.openAt }}</strong>
-  </h3>
-  <h3>
-    # of interviews: <strong>{{ modalJobPost.interviewTypes }}</strong>
-  </h3>
-  <h3>
-    Closes: <strong>{{ modalJobPost.closeAt }}</strong>
-  </h3>
-  <h3>Description:</h3>
-  <p class="description">{{ modalJobPost.description }}</p>
-  <h3>Notes:</h3>
-  <p class="notes">{{ modalJobPost.notes }}</p>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
+<div class="header-wrapper">
+  <h1 class="modal-title" mat-dialog-title>Job post</h1>
+  <mat-icon mat-dialog-close>close</mat-icon>
+</div>
+<div class="content-wrapper">
+  <mat-dialog-content class="mat-typography">
+    <div class="grid-content-wrapper">
+      <h3>
+        Title:<span>{{ modalJobPost.title }}</span>
+      </h3>
+      <h3>
+        Opens:<span>{{ modalJobPost.openAt }}</span>
+      </h3>
+      <h3>
+        # of interviews:<span>{{ modalJobPost.interviewTypes }}</span>
+      </h3>
+      <h3>
+        Closes:<span>{{ modalJobPost.closeAt }}</span>
+      </h3>
+    </div>
+    <div class="flex-content-wrapper">
+      <h3>Description:</h3>
+      <p class="first">{{ modalJobPost.description }}</p>
+    </div>
+    <div class="flex-content-wrapper">
+      <h3>Notes:</h3>
+      <p class="second">{{ modalJobPost.notes }}</p>
+    </div>
+  </mat-dialog-content>
+</div>
+<mat-dialog-actions align="start">
   <button mat-button mat-dialog-close>Close</button>
 </mat-dialog-actions>
