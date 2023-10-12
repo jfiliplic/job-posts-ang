@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.spinner = false;
-    }, 1000);
+    }, 700);
     this.fetchAndDisplayData();
     this.dataSource.filterPredicate = (data, filter: string): boolean => {
       return data.title.toLowerCase().includes(filter);
@@ -57,7 +57,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       )
       .subscribe((response) => {
         this.dataSource.data = response;
-        console.log(this.dataSource.data);
       });
   }
 
@@ -88,7 +87,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   openDialog(row: JobPost): void {
-    const dialogConfig = new MatDialogConfig();
+    const dialogConfig = new MatDialogConfig<any>();
     dialogConfig.data = {
       title: row.title,
       openAt: this.formatDate(row.openAt),
