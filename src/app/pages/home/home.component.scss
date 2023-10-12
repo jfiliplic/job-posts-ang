@@ -1,7 +1,5 @@
-.error-msg {
-  padding: 100px 0px;
-  text-align: center;
-  font-weight: 500;
+.general-wrapper {
+  padding-bottom: 10px;
 }
 
 .spinner {
@@ -14,8 +12,6 @@
 .table-wrapper {
   margin: 20px auto;
   padding: 20px;
-  border: none;
-  box-shadow: none;
 
   h1.table-title {
     color: rgba(0, 0, 0, 0.6);
@@ -74,6 +70,13 @@
   mat-label {
     letter-spacing: normal;
   }
+}
+
+.error-msg {
+  margin-top: 70px;
+  padding: 0px 25px;
+  text-align: center;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
