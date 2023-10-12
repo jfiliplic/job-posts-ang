@@ -5,9 +5,10 @@
 <div class="content-wrapper">
   <mat-dialog-content class="mat-typography">
     <div class="grid-content-wrapper">
-      <h3>
-        Title:<span>{{ modalJobPost.title }}</span>
-      </h3>
+      <div class="flex-content-wrapper">
+        <h3 class="title">Title:</h3>
+        <p class="job-post">{{ modalJobPost.title }}</p>
+      </div>
       <h3>
         Opens:<span>{{ modalJobPost.openAt }}</span>
       </h3>
@@ -20,11 +21,11 @@
     </div>
     <div class="flex-content-wrapper">
       <h3>Description:</h3>
-      <p class="first">{{ modalJobPost.description }}</p>
+      <p class="description">{{ modalJobPost.description }}</p>
     </div>
     <div class="flex-content-wrapper">
       <h3>Notes:</h3>
-      <p class="second">{{ modalJobPost.notes }}</p>
+      <p class="notes">{{ modalJobPost.notes }}</p>
     </div>
   </mat-dialog-content>
 </div>

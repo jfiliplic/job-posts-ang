@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
 
+Download or clone repo. In the `environment` folder create an `environment.ts` file (see `environment.example.ts`) with a Bearer token (tokens have an expiration date) from `https://stage.folks.indigo.si`. In terminal cd into the folder and run `npm install` to install dependencies. Run `npm start` for a local server. Navigate to `http://localhost:4200/`.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
