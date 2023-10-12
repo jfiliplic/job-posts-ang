@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   data: JobPost[] = [];
   subscription: Subscription = new Subscription();
   errorMessage: string = '';
-  spinner: boolean = true;
+  spinner: boolean | undefined;
 
   displayedColumns: string[] = ['title', 'openAt', 'closeAt', 'interviewTypes'];
 
@@ -36,9 +36,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.spinner = false;
-    }, 700);
     this.fetchAndDisplayData();
     this.dataSource.filterPredicate = (data, filter: string): boolean => {
       return data.title.toLowerCase().includes(filter);
@@ -46,16 +43,19 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   fetchAndDisplayData(): void {
+    this.spinner = true;
     this.subscription = this.dataService
       .getData()
       .pipe(
         catchError((err) => {
+          this.spinner = false;
           this.errorMessage =
             'Sorry, something went wrong, cannot display data';
           return throwError(() => err);
         })
       )
       .subscribe((response) => {
+        this.spinner = false;
         this.dataSource.data = response;
       });
   }
