@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalComponent } from './modal.component';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+} from '@angular/material/dialog';
 
 describe('ModalComponent', () => {
   let component: ModalComponent;
@@ -8,7 +12,8 @@ describe('ModalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ModalComponent]
+      imports: [MatDialogModule, MAT_DIALOG_DATA],
+      declarations: [ModalComponent],
     });
     fixture = TestBed.createComponent(ModalComponent);
     component = fixture.componentInstance;

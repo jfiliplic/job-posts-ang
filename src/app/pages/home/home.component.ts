@@ -10,7 +10,7 @@ import { catchError, throwError, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalComponent } from '../../components/modal/modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
@@ -20,8 +20,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   title = 'home';
-  data: JobPost[] = [];
-  subscription: Subscription = new Subscription();
+  subscription: Subscription | undefined;
   errorMessage: string = '';
   spinner: boolean | undefined;
 
@@ -66,15 +65,19 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 
   formatDate(interviewDate: Date): string {
-    const date = new Date(interviewDate);
-    const yearOfDate = date.getFullYear();
-    const monthOfDate = (date.getMonth() + 1).toString().padStart(2, '0');
-    const dayOfDate = date.getDate().toString().padStart(2, '0');
-    return [dayOfDate, monthOfDate, yearOfDate].join('.');
+    const transformedDate = new Date(interviewDate).toLocaleDateString(
+      'slo-SI',
+      {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }
+    );
+    return transformedDate.replace(/\s/g, '');
   }
 
   countInterviews(interviewTypes: {}[]): number {
