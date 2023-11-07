@@ -2,27 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
-
-export interface JobPost {
-  id: string;
-  title: string;
-  description: string;
-  notes: string;
-  openAt: Date;
-  closeAt: Date;
-  defaultAssignmentId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  isDeleted: boolean;
-  interviewTypes: InterviewType[];
-}
-
-interface InterviewType {
-  id: string;
-  title: string;
-  description: string;
-  order: number;
-}
+import { JobPost } from '../shared/models/models';
 
 @Injectable({
   providedIn: 'root',
@@ -30,13 +10,11 @@ interface InterviewType {
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = environment.apiUrl;
-
   private bearerToken = environment.bearerToken;
 
   headers = new HttpHeaders().set('Authorization', this.bearerToken);
 
-  getData(): Observable<JobPost[]> {
-    return this.http.get<JobPost[]>(this.apiUrl, { headers: this.headers });
+  getData(fullApiUrl: string): Observable<JobPost[]> {
+    return this.http.get<JobPost[]>(fullApiUrl, { headers: this.headers });
   }
 }
