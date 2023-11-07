@@ -5,13 +5,15 @@ import {
   OnDestroy,
   ViewChild,
 } from '@angular/core';
-import { DataService, JobPost } from '../../services/data.service';
+import { JobPost } from 'src/app/shared/models/models';
+import { DataService } from '../../services/data.service';
 import { catchError, throwError, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ModalComponent } from '../../components/modal/modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-home',
@@ -41,10 +43,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     };
   }
 
-  fetchAndDisplayData(): void {
+  fetchAndDisplayData(endpointPath: string = '/JobPost'): void {
     this.spinner = true;
+    const fullApiUrl = `${environment.baseUrl}${endpointPath}`;
     this.subscription = this.dataService
-      .getData()
+      .getData(fullApiUrl)
       .pipe(
         catchError((err) => {
           this.spinner = false;

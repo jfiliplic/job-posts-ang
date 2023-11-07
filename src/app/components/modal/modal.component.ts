@@ -1,14 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-interface ModalJobPost {
-  title: string;
-  openAt: string;
-  closeAt: string;
-  interviewTypes: number;
-  description: string;
-  notes: string;
-}
+import { ModalJobPost } from 'src/app/shared/models/models';
 
 @Component({
   selector: 'app-modal',
